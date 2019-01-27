@@ -16,6 +16,10 @@ RUN yum -y install rh-php71 rh-php71-php rh-php71-php-fpm
 #RUN yum clean all
 RUN yum makecache fast
 
-EXPOSE 80
+RUN useradd sshuser
+RUN usermod -aG apache sshuser
+RUN mv /etc/opt/rh/rh-php71/php-fpm.d/www.conf /etc/opt/rh/rh-php71/php-fpm.d/www.conf.bak
+
+EXPOSE 80 443 22
 
 CMD ["/usr/sbin/init"]
