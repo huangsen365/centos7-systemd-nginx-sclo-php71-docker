@@ -19,6 +19,9 @@ RUN yum makecache fast
 RUN useradd sshuser
 RUN usermod -aG apache sshuser
 RUN mv /etc/opt/rh/rh-php71/php-fpm.d/www.conf /etc/opt/rh/rh-php71/php-fpm.d/www.conf.bak
+COPY php-fpm_www.yourdomain.com.conf /etc/opt/rh/rh-php71/php-fpm.d/php-fpm_www.yourdomain.com.conf.bak
+COPY php-fpm_www.yourdomain.com.conf /etc/opt/rh/rh-php71/php-fpm.d/php-fpm_0_www.yourdomain.com.conf
+
 
 EXPOSE 80 443 22
 
